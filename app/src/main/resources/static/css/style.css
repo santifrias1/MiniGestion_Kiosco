@@ -1,0 +1,54 @@
+.form-container {
+    background-color: var(--light-blue);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.form-container h3 {
+    margin-top: 0;
+    color: var(--primary-blue);
+}
+
+form {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.btn-agregar {
+    background-color: #28a745;
+}
+
+.btn-agregar:hover {
+    background-color: #218838;
+}
+
+.btn-vender {
+    background-color: var(--primary-blue);
+}
+
+.btn-vender:hover {
+    background-color: #004085;
+}
+
+.btn-vender:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Kiosco</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Inventario del Kiosco</h1>
+        
+        <div class="form-container">
+            <h3>Agregar Nuevo Producto</h3>
+            <form id="formulario-producto">
+                <input type="text" id="nombre" placeholder="Nombre (ej. Doritos)" required>
+                <input type="number" id="precio" placeholder="Precio" step="0.01" required>
+                <input type="number" id="stock" placeholder="Stock" required>
+                <button type="submit" class="btn-agregar">Guardar Producto</button>
+            </form>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-productos">
+            </tbody>
+        </table>
+    </div>
+
+    <script src="javascript/script.js"></script>
+</body>
+</html>
