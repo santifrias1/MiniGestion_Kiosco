@@ -3,37 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Kiosco</title>
+    <title>Sistema de Gestión - Kiosco</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Inventario del Kiosco</h1>
-        
-        <div class="form-container">
-            <h3>Agregar Nuevo Producto</h3>
-            <form id="formulario-producto">
-                <input type="text" id="nombre" placeholder="Nombre (ej. Doritos)" required>
-                <input type="number" id="precio" placeholder="Precio" step="0.01" required>
-                <input type="number" id="stock" placeholder="Stock" required>
-                <button type="submit" class="btn-agregar">Guardar Producto</button>
-            </form>
-        </div>
+    <header>
+        <h1>Punto de Venta - Kiosco</h1>
+    </header>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Stock</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody id="tabla-productos">
-            </tbody>
-        </table>
+    <div class="dashboard">
+        <!-- Columna Izquierda: Inventario -->
+        <section class="panel inventario-panel">
+            <div class="header-panel">
+                <h2>Inventario</h2>
+                <form id="formulario-producto" class="mini-form">
+                    <input type="text" id="nombre" placeholder="Nombre" required>
+                    <input type="number" id="precio" placeholder="Precio $" step="0.01" required>
+                    <input type="number" id="stock" placeholder="Stock" required>
+                    <button type="submit" class="btn-agregar">Nuevo</button>
+                </form>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-productos"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Columna Derecha: Carrito -->
+        <section class="panel carrito-panel">
+            <h2>Carrito de Compras</h2>
+            <div class="carrito-items" id="lista-carrito">
+                <p class="carrito-vacio">El carrito está vacío</p>
+            </div>
+            
+            <div class="carrito-resumen">
+                <h3>Total: $<span id="total-carrito">0.00</span></h3>
+                <button id="btn-cobrar" class="btn-cobrar" disabled onclick="procesarVenta()">Cobrar y Facturar</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal de Factura -->
+    <div id="modal-factura" class="modal">
+        <div class="modal-content">
+            <div class="factura-header">
+                <h2>Factura de Venta</h2>
+                <p id="fecha-factura"></p>
+            </div>
+            <div id="detalle-factura"></div>
+            <h3 class="total-factura">Total Pagado: $<span id="total-modal"></span></h3>
+            <button class="btn-imprimir" onclick="cerrarFactura()">Cerrar / Nueva Venta</button>
+        </div>
     </div>
 
     <script src="javascript/script.js"></script>

@@ -1,54 +1,171 @@
-.form-container {
-    background-color: var(--light-blue);
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+:root {
+    --primary-blue: #004085;
+    --light-blue: #cce5ff;
+    --accent-blue: #007bff;
+    --bg-gray: #f4f7f6;
+    --white: #ffffff;
+    --text-dark: #333333;
+    --border-color: #dee2e6;
 }
 
-.form-container h3 {
-    margin-top: 0;
-    color: var(--primary-blue);
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-gray);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
 }
 
-form {
+header {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.dashboard {
     display: flex;
-    gap: 10px;
+    gap: 20px;
+    padding: 20px;
+    height: calc(100vh - 100px);
+}
+
+.panel {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.inventario-panel {
+    flex: 2;
+    overflow: hidden;
+}
+
+.carrito-panel {
+    flex: 1;
+    background-color: var(--light-blue);
+}
+
+.header-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--light-blue);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+/* Formularios y Botones */
+.mini-form {
+    display: flex;
+    gap: 5px;
 }
 
 input {
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 8px;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
-    flex: 1;
+    width: 100px;
 }
 
 button {
     cursor: pointer;
     border: none;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: 4px;
     font-weight: bold;
-    color: white;
-    transition: background-color 0.3s;
+    color: var(--white);
+    transition: 0.2s;
 }
 
-.btn-agregar {
-    background-color: #28a745;
+.btn-agregar { background-color: #28a745; }
+.btn-agregar:hover { background-color: #218838; }
+
+.btn-carrito { background-color: var(--accent-blue); padding: 5px 10px; font-size: 0.8rem;}
+.btn-carrito:hover { background-color: #0056b3; }
+.btn-carrito:disabled { background-color: #ccc; cursor: not-allowed; }
+
+.btn-stock { background-color: #6c757d; padding: 5px 10px; font-size: 0.8rem; margin-left: 5px;}
+.btn-stock:hover { background-color: #5a6268; }
+
+.btn-cobrar { background-color: #28a745; width: 100%; padding: 15px; font-size: 1.2rem; margin-top: 20px;}
+.btn-cobrar:hover:not(:disabled) { background-color: #218838; }
+.btn-cobrar:disabled { background-color: #a5d8ad; cursor: not-allowed; }
+
+/* Tablas */
+.table-container {
+    overflow-y: auto;
+    flex: 1;
 }
 
-.btn-agregar:hover {
-    background-color: #218838;
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.btn-vender {
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
     background-color: var(--primary-blue);
+    color: var(--white);
+    position: sticky;
+    top: 0;
 }
 
-.btn-vender:hover {
-    background-color: #004085;
+/* Carrito Items */
+.carrito-items {
+    flex: 1;
+    overflow-y: auto;
+    background: var(--white);
+    border-radius: 4px;
+    padding: 10px;
 }
 
-.btn-vender:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
+.item-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
 }
+
+.cantidad-controls button {
+    background: var(--primary-blue);
+    padding: 2px 8px;
+    margin: 0 5px;
+}
+
+/* Modal Factura */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+}
+
+.factura-header { border-bottom: 2px dashed #ccc; margin-bottom: 20px; }
+.detalle-linea { display: flex; justify-content: space-between; margin: 5px 0; }
+.total-factura { border-top: 2px dashed #ccc; padding-top: 15px; font-size: 1.5rem; color: var(--primary-blue); }
+.btn-imprimir { background: var(--accent-blue); width: 100%; margin-top: 20px; padding: 10px;}
