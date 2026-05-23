@@ -1,7 +1,6 @@
 let carrito = [];
 let productosGlobal = [];
 
-// 1. Cargar productos desde el Backend
 async function cargarProductos() {
     try {
         const respuesta = await fetch('/api/productos');
@@ -12,7 +11,6 @@ async function cargarProductos() {
     }
 }
 
-// 2. Dibujar la tabla de inventario
 function renderizarTabla() {
     const cuerpoTabla = document.getElementById('tabla-productos');
     cuerpoTabla.innerHTML = ''; 
@@ -38,7 +36,6 @@ function renderizarTabla() {
     });
 }
 
-// 3. Manejo del Stock directamente
 async function pedirAumentoStock(id) {
     const cantidadStr = prompt("¿Cuántas unidades nuevas llegaron al kiosco?");
     const cantidad = parseInt(cantidadStr);
@@ -46,14 +43,13 @@ async function pedirAumentoStock(id) {
     if (!isNaN(cantidad) && cantidad > 0) {
         try {
             await fetch(`/api/productos/${id}/stock/${cantidad}`, { method: 'PUT' });
-            cargarProductos(); // Recargar la tabla
+            cargarProductos(); 
         } catch (error) {
             alert("Error al actualizar el stock.");
         }
     }
 }
 
-// 4. Agregar nuevo producto
 document.getElementById('formulario-producto').addEventListener('submit', async function(e) {
     e.preventDefault();
     const nuevoProducto = {
@@ -71,10 +67,6 @@ document.getElementById('formulario-producto').addEventListener('submit', async 
     this.reset();
     cargarProductos();
 });
-
-// ==========================================
-// LÓGICA DEL CARRITO Y FACTURACIÓN
-// ==========================================
 
 function agregarAlCarrito(id) {
     const producto = productosGlobal.find(p => p.id === id);
@@ -148,9 +140,7 @@ function renderizarCarrito() {
     btnCobrar.disabled = false;
 }
 
-// 5. Procesar la venta en la base de datos y mostrar Factura
 async function procesarVenta() {
-    // Preparamos el array que el Backend espera: [{id: 1, cantidad: 2}]
     const payload = carrito.map(item => ({ id: item.id, cantidad: item.cantidad }));
 
     try {
@@ -161,16 +151,15 @@ async function procesarVenta() {
         });
 
         generarFacturaVisual();
-        carrito = []; // Vaciamos el carrito
+        carrito = [];
         renderizarCarrito();
-        cargarProductos(); // Actualizamos el stock visual
+        cargarProductos(); 
 
     } catch (error) {
         alert("Hubo un error al procesar la venta");
     }
 }
 
-// 6. Modal de Factura
 function generarFacturaVisual() {
     const detalle = document.getElementById('detalle-factura');
     let total = 0;

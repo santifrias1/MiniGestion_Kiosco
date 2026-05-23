@@ -63,7 +63,6 @@ header h1 {
     padding-bottom: 10px;
 }
 
-/* Formularios y Botones */
 .mini-form {
     display: flex;
     gap: 5px;
@@ -100,7 +99,6 @@ button {
 .btn-cobrar:hover:not(:disabled) { background-color: #218838; }
 .btn-cobrar:disabled { background-color: #a5d8ad; cursor: not-allowed; }
 
-/* Tablas */
 .table-container {
     overflow-y: auto;
     flex: 1;
@@ -124,7 +122,6 @@ th {
     top: 0;
 }
 
-/* Carrito Items */
 .carrito-items {
     flex: 1;
     overflow-y: auto;
@@ -147,7 +144,6 @@ th {
     margin: 0 5px;
 }
 
-/* Modal Factura */
 .modal {
     display: none;
     position: fixed;
