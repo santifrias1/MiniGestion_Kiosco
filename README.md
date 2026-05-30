@@ -48,7 +48,7 @@ Bloqueo automático de botones e indicadores visuales cuando un producto queda s
 ## Base de Datos y Entorno
 - **PostgreSQL**
 - **DBeaver**
-- **Xubuntu Linux**
+- **Kali Linux**
 - **Visual Studio Code**
    - Extension Pack for Java
    - Spring Boot Extension Pack
